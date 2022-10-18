@@ -1,0 +1,55 @@
+Features:
+    From people side:
+        - owner
+        - manager
+        - worker
+        - volunteer
+
+    From animal side:
+        - add/adopt
+        - feed
+        - what they eat
+        - special events/allow visits
+        - groups of animals
+        - animals accepted
+
+    From shelter side:
+        - no of cages
+        - type of cage
+        - cage properties(no of animals accepted)
+        - cage for a specific type of animals (don't mix them)
+        - capacity
+        - condition
+
+    From money side:
+        - funds/donations/balance/accounts
+        - payable staff
+
+
+    Owner:
+        - hire/fire manager, workers
+        - accept volunteers
+        - accepts animals
+        - accepts visits
+        - accepts walking animals
+        - buy food
+        - manage account
+        -
+    Manager:
+    Worker:
+    Volunteer:
+
+    Animal:
+        - type of animal (dogs, cats,
+        - if they are rude, or you can pet them
+        - eat()
+        - sound()
+        - size
+        - male/female (enum)
+        - level of happiness degrading overtime
+        - age
+        - isAlive
+        - date of coming
+        - level of feeding degrading overtime
+        - level of cuteness
+        - interface for
