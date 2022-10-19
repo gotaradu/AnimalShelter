@@ -1,6 +1,7 @@
 package Shelter;
 
 import Animals.Animal;
+import Staff.Owner;
 
 import java.util.ArrayList;
 
@@ -8,8 +9,7 @@ public class Shelter {
     public double foodQuantity;
 
     private ArrayList<Animal> animals = new ArrayList<>();
-    private String owner;
-
+    private static final Owner owner = Owner.getInstance();
 
     public Shelter(int foodQuantity) {
         this.foodQuantity = foodQuantity;

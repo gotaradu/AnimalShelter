@@ -36,8 +36,12 @@ Features:
         - manage account
         -
     Manager:
+        - hire/fire workers
+        - quit
     Worker:
+        - quit
     Volunteer:
+        - quit
 
     Animal:
         - type of animal (dogs, cats)
