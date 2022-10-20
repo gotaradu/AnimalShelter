@@ -1,30 +1,18 @@
 package Staff;
 
-public abstract class Employee {
-    private String name;
-    private int age;
-    private Gender gender;
+import Animals.*;
 
-    public Employee() {
+public interface Employee {
 
-    }
+    public void feedAnimals();
 
-    public Employee(String name, int age, Gender gender) {
-        this.name = name;
-        this.age = age;
-        this.gender = gender;
-    }
+    public void cleanShelter();
 
-    public abstract void feedAnimals();
+    public void playWithDogs(Dog dog);
 
-    public abstract void cleanShelter();
+    public void playWithCats(Cat cat);
 
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", gender=" + gender +
-                '}';
-    }
+
 }
+
+

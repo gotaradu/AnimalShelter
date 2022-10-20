@@ -1,71 +1,66 @@
 package Staff;
 
-import java.util.ArrayList;
+import Animals.Cat;
+import Animals.Dog;
 
-public class Owner extends Employee { // Owner is singleton because there can be only 1 owner
+import java.util.*;
 
-    private static Owner owner;
-    private static String name;
-    private static int age;
-    private static Gender gender;
+public class Owner extends Lead { // Owner is singleton because there can be only 1 owner
 
-    private static ArrayList<Manager> managersUnderSurveillance = new ArrayList<Manager>();
+    private static final Owner owner = new Owner("OWNER", 99, Gender.MAN);
 
-    public static ArrayList<Volunteer> volunteersUnderSurveillance = new ArrayList<Volunteer>();
-    public static ArrayList<Worker> workersUnderSurveillance = new ArrayList<Worker>();
+    private Map<String, Owner> ownerMap = new HashMap<String, Owner>();
+    private Map<String, Manager> managerMap = new HashMap<String, Manager>();
 
-    public ArrayList<Worker> getWorkers(){
-        return workersUnderSurveillance;
+    public Owner(String name, int age, Gender gender) {
+        super(name, age, gender);
     }
 
-    public ArrayList<Manager> getManagers(){
-        return managersUnderSurveillance;
-    }
-    private Owner() {
-        super();
-    }
-
-    public static Owner getInstance() {                                 // check for synchronization of threads!
-        if (owner == null) {
-            owner = new Owner();
-        }
+    public static Owner getInstance() {
         return owner;
     }
 
-    public void acceptVolunteer() {
 
+    public void addManagerToMap(String key, Manager manager) throws AlreadyExistsException{
+        if (managerMap.containsKey(key)) {
+            throw new AlreadyExistsException("This manager already exists!");
+        } else {
+            managerMap.put(key, manager);
+        }
     }
 
-    public void hireWorker(Worker worker){
-        Owner.workersUnderSurveillance.add(worker);
-    }
-
-    public void hireManager(Manager manager) {
-        Owner.managersUnderSurveillance.add(manager);
-    }
-
-    public void addEmployee() {
-
-    }
-
-
-
-    public ArrayList<Manager> getManagersUnderSurveillance() {
-        return managersUnderSurveillance;
+    public Map<String, Manager> getManagerMap() {
+        return managerMap;
     }
 
     @Override
-    public String toString() {
-        return "Owner{}";
+    public void addVolunteerToMap(String key, Volunteer volunteer) {
+        getVolunteerMap().put(key, volunteer);
+    }
+
+    @Override
+    public void addWorkerToMap(String key, Worker worker) {
+        getWorkerMap().put(key, worker);
     }
 
     @Override
     public void cleanShelter() {
+        System.out.println("Owner cleaning!??");
+    }
 
+    @Override
+    public void playWithDogs(Dog dog) {
+        System.out.println("Owner playing with dogs...");
+    }
+
+    @Override
+    public void playWithCats(Cat cat) {
+        System.out.println("Owner playing with cats...");
     }
 
     @Override
     public void feedAnimals() {
-
+        System.out.println("Owner feeding animals!");
     }
+
 }
