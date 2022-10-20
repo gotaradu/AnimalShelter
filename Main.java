@@ -1,5 +1,6 @@
 import java.util.Date;
 import java.util.Map;
+import java.util.Scanner;
 
 import Animals.*;
 import Shelter.*;
@@ -31,12 +32,14 @@ public class Main {
 //
 //
 //
+
+
         Owner owner = Owner.getInstance();
         Manager manager1 = new Manager("Andreea", 20, Gender.WOMEN);
         Manager manager2 = new Manager("Elena", 20, Gender.WOMEN);
         try {
             owner.addManagerToMap(String.valueOf(manager1.hashCode()), manager1);
-            owner.addManagerToMap(String.valueOf(manager1.hashCode()), manager2);
+            owner.addManagerToMap(String.valueOf(manager2.hashCode()), manager2);
         } catch (AlreadyExistsException alreadyExistsException) {
             System.out.println(alreadyExistsException.getMessage());
         }

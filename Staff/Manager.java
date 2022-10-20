@@ -37,4 +37,10 @@ public class Manager extends Lead {
     public void feedAnimals() {
 
     }
+
+    public void createTeam(){} // create a team of workers and volunteers that can work together(teams clean faster)
+    public void buyFood(){}
+    public void findAdoption(){}// random change of finding possible adoptions
+
+
 }

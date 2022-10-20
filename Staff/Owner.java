@@ -19,8 +19,7 @@ public class Owner extends Lead { // Owner is singleton because there can be onl
     public static Owner getInstance() {
         return owner;
     }
-
-
+    
     public void addManagerToMap(String key, Manager manager) throws AlreadyExistsException{
         if (managerMap.containsKey(key)) {
             throw new AlreadyExistsException("This manager already exists!");
