@@ -89,12 +89,13 @@ public abstract class Execute implements Employee {
 
     @Override
     public String toString() {
-        return "Execute{" +
+        return "\n" + "Execute{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
                 ", gender=" + gender +
                 ", hasTeam=" + hasTeam +
                 ", typeOfWork=" + typeOfWork +
-                '}';
+                '}' + "\n";
+
     }
 }

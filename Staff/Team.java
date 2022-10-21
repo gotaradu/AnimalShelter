@@ -6,12 +6,18 @@ public class Team {
     private Manager leader;
     private Set<Execute> teamMembers;
 
+
+
+    private int powerOfTeam;
+
     public Team() {
     }
 
     public Team(Manager leader, Set<Execute> teamMembers) {
         this.leader = leader;
         this.teamMembers = teamMembers;
+
+
     }
 
     public Manager getLeader() {
@@ -29,4 +35,10 @@ public class Team {
     public void setTeamMembers(Set<Execute> teamMembers) {
         this.teamMembers = teamMembers;
     }
+
+    public int getPowerOfTeam() {
+        return powerOfTeam;
+    }
+
+
 }

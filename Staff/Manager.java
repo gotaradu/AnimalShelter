@@ -36,7 +36,7 @@ public class Manager extends Lead {
 
     }
 
-    public Team createTeamForWork(WORK work, Manager administrator, int noOfMembers) throws TeamIsOutOfBoundsException {
+    public Team createTeamForWork(WORK work, Manager administrator, int noOfMembers) throws TeamIsOutOfBoundsException, NotEnoughVolunteersException, NotEnoughWorkersException {
         if (noOfMembers > 3)
             throw new TeamIsOutOfBoundsException(String.valueOf(noOfMembers) + " is too big.Max 3 members allowed");
         else if (noOfMembers < 2)
@@ -51,45 +51,46 @@ public class Manager extends Lead {
             for (Map.Entry<String, Worker> entry : getWorkerMap().entrySet()) {
                 //check if member does not have team and if work is ok
                 Worker worker = entry.getValue();
+//                System.out.println(worker.isHasTeam());
+//                System.out.println(index);
                 if (!worker.isHasTeam() && worker.getTypeOfWork() == work) {
                     //add worker to new set
-                    //System.out.println(worker.getName());
                     teamHashSet.add(worker);
+                    worker.setHasTeam(true);
+                    System.out.println("Added Worker " + worker.getName());
                     index--;
+                    break; //break so we have only one worker
                 }
-                worker.setHasTeam(true);
-                break;      //break so we have only one worker
             }
             if (index == noOfMembers) {
-                System.out.println("Not enough Workers!");
-                return null;
+                throw new NotEnoughWorkersException("Not enough Workers!");
+
             }
             for (Map.Entry<String, Volunteer> entry : getVolunteerMap().entrySet()) {
                 Volunteer volunteer = entry.getValue();
                 if (index > 0) {
                     if (!volunteer.isHasTeam() && volunteer.getTypeOfWork() == work) {
                         teamHashSet.add(volunteer);
-                        //System.out.println(volunteer.getName());
+                        System.out.println("Added Volunteer " + volunteer.getName());
                         volunteer.setHasTeam(true);
                         index--;
                     }
                 }
             }
             if (index > 0) {
-                System.out.println("Not enough volunteers!Adding more workers");
+                System.out.println("Not enough Volunteers! Adding more workers!");
                 for (Map.Entry<String, Worker> entryWorkers : getWorkerMap().entrySet()) {
                     Worker worker = entryWorkers.getValue();
                     if (!worker.isHasTeam() && worker.getTypeOfWork() == work) {
                         teamHashSet.add(worker);
-                        //System.out.println(worker.getName());
+                        System.out.println("Added Worker " + worker.getName());
                         worker.setHasTeam(true);
                         index--;
                     }
                 }
             }
             if (index > 0) {
-                System.out.println("Not enough Employees!");
-                return null;
+                throw new NotEnoughWorkersException("Not enough Workers!");
             }
             team.setTeamMembers(teamHashSet);
             return team;

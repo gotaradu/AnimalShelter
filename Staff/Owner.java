@@ -2,6 +2,7 @@ package Staff;
 
 import Animals.Cat;
 import Animals.Dog;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
@@ -20,11 +21,11 @@ public class Owner extends Lead { // Owner is singleton because there can be onl
         return owner;
     }
 
-    public void addManagerToMap(String key, Manager manager) throws AlreadyExistsException {
-        if (managerMap.containsKey(key)) {
+    public void addManagerToMap(@NotNull Manager manager) throws AlreadyExistsException {
+        if (managerMap.containsKey(String.valueOf(manager.hashCode()))) {
             throw new AlreadyExistsException("This manager already exists!");
         } else {
-            managerMap.put(key, manager);
+            managerMap.put(String.valueOf(manager.hashCode()), manager);
         }
     }
 

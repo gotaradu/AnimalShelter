@@ -1,25 +1,22 @@
 package Staff;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
 public class ManagerTest {
     @Test
     public void testCreateTeam() {
-        WORK work = WORK.CLEAN;
 
-        // create the mananger
+        // create the manager
 
         Manager manager = new Manager("Radu", 23, Gender.MAN);
 
         //create workers
         Worker worker1 = new Worker("Worker1", 20, Gender.MAN, WORK.CLEAN);
         Worker worker2 = new Worker("Worker2", 19, Gender.WOMEN, WORK.CLEAN);
-        Worker worker3 = new Worker("Worker3", 22, Gender.MAN, WORK.REPAIR);
+        Worker worker3 = new Worker("Worker3", 22, Gender.MAN, WORK.CLEAN);
         Worker worker4 = new Worker("Worker4", 15, Gender.WOMEN, WORK.REPAIR);
 
         //add worker to map
@@ -33,7 +30,7 @@ public class ManagerTest {
         Volunteer volunteer1 = new Volunteer("Volunteer1", 14, Gender.MAN, WORK.CLEAN);
         Volunteer volunteer2 = new Volunteer("Volunteer2", 44, Gender.MAN, WORK.CLEAN);
         Volunteer volunteer3 = new Volunteer("Volunteer3", 18, Gender.MAN, WORK.CLEAN);
-        Volunteer volunteer4 = new Volunteer("Volunteer4", 25, Gender.MAN, WORK.CLEAN);
+        Volunteer volunteer4 = new Volunteer("Volunteer4", 25, Gender.MAN, WORK.REPAIR);
 
         //add volunteers to map
 
@@ -56,34 +53,41 @@ public class ManagerTest {
 
         Team team = new Team();
 
-        System.out.println(manager.getWorkerMap().toString());
-        System.out.println(manager.getVolunteerMap().toString());
+//        System.out.println(manager.getWorkerMap().toString());
+//        System.out.println(manager.getVolunteerMap().toString());
 
         try {
             team = manager.createTeamForWork(WORK.CLEAN, manager, 3);
         } catch (TeamIsOutOfBoundsException teamIsOutOfBoundsException) {
             System.out.println(teamIsOutOfBoundsException.getMessage());
+        } catch (NotEnoughWorkersException notEnoughWorkersException) {
+            System.out.println(notEnoughWorkersException.getMessage());
+        } catch (NotEnoughVolunteersException notEnoughVolunteersException) {
+            System.out.println(notEnoughVolunteersException.getMessage());
         }
 
-        ArrayList<Class> classArrayListExpected = new ArrayList<>();
-        ArrayList<Class> classArrayList = new ArrayList<>();
-        //System.out.println(team);
-        System.out.println(team.getTeamMembers().size());
-        for (Execute o : team.getTeamMembers()) {
+//        ArrayList<Class> classArrayListExpected = new ArrayList<>();
+//        ArrayList<Class> classArrayList = new ArrayList<>();
+//        System.out.println(team);
+//        System.out.println(team.getTeamMembers().size());
+//
+//
+//        for (Object o : expectedTeamHashSet.toArray()) {
+//            Execute e = (Execute) o;
+//            classArrayListExpected.add(e.getClass());
+//        }
+//        System.out.println("-----------------");
+//        for (Execute o : team.getTeamMembers()) {
+//
+//            classArrayList.add(o.getClass());
+//
+//        }
+//
+//
+//
+//        System.out.println(classArrayListExpected);
+//        System.out.println(classArrayList);
 
-            classArrayList.add(o.getClass());
 
-        }
-
-        System.out.println("-----------------");
-        for (Object o : expectedTeamHashSet.toArray()) {
-            Execute e = (Execute) o;
-            classArrayListExpected.add(e.getClass());
-        }
-
-        System.out.println(classArrayListExpected);
-        System.out.println(classArrayList);
-
-        Assertions.assertEquals(classArrayListExpected, classArrayList);
     }
 }

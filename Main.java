@@ -37,8 +37,8 @@ public class Main {
         Manager manager1 = new Manager("Andreea", 20, Gender.WOMEN);
         Manager manager2 = new Manager("Elena", 20, Gender.WOMEN);
         try {
-            owner.addManagerToMap(String.valueOf(manager1.hashCode()), manager1);
-            owner.addManagerToMap(String.valueOf(manager2.hashCode()), manager2);
+            owner.addManagerToMap(manager1);
+            owner.addManagerToMap(manager2);
         } catch (AlreadyExistsException alreadyExistsException) {
             System.out.println(alreadyExistsException.getMessage());
         }
@@ -52,16 +52,7 @@ public class Main {
 
         Worker worker1 = new Worker("John", 34, Gender.WOMEN, WORK.CLEAN);
         Worker worker2 = new Worker("Doe", 14, Gender.MAN, WORK.CLEAN);
-//
-//        manager1.addWorkerToMap(String.valueOf(worker1.hashCode()), worker1);
-//        manager2.addWorkerToMap(String.valueOf(worker1.hashCode()), worker1);
 
-//        Set set = manager1.createTeamForWork(WORK.CLEAN);
-//        Set set2 = manager1.createTeamForWork(WORK.CLEAN);
 
-//        for (Object o : set.toArray()) {
-//            Execute e = (Execute) o;
-//            System.out.println(e.getName());
-//        }
     }
 }
