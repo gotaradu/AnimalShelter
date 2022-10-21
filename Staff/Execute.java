@@ -10,6 +10,16 @@ public abstract class Execute implements Employee {
     private int exhaustionLevel;
     private int happinessLevel;
 
+    private boolean hasTeam = false;
+
+    public boolean isHasTeam() {
+        return hasTeam;
+    }
+
+    public void setHasTeam(boolean hasTeam) {
+        this.hasTeam = hasTeam;
+    }
+
     public int getPowerLevel() {
         return powerLevel;
     }

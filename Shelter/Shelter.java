@@ -9,7 +9,6 @@ public class Shelter {
     public double foodQuantity;
 
     private ArrayList<Animal> animals = new ArrayList<>();
-  //  private static final Owner owner = Owner.getInstance();
 
     public Shelter(int foodQuantity) {
         this.foodQuantity = foodQuantity;

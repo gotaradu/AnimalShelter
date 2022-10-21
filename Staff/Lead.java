@@ -31,9 +31,13 @@ public abstract class Lead implements Employee {
         return volunteerMap;
     }
 
-    protected abstract void addWorkerToMap(String key, Worker worker);
+    public void addWorkerToMap(String key, Worker worker) {
+        workerMap.put(key, worker);
+    }
 
-    protected abstract void addVolunteerToMap(String key, Volunteer volunteer);
+    public void addVolunteerToMap(String key, Volunteer volunteer) {
+        volunteerMap.put(key, volunteer);
+    }
 
 
     public String getName() {

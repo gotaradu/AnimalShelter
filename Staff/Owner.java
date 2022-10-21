@@ -33,16 +33,6 @@ public class Owner extends Lead { // Owner is singleton because there can be onl
     }
 
     @Override
-    public void addVolunteerToMap(String key, Volunteer volunteer) {
-        getVolunteerMap().put(key, volunteer);
-    }
-
-    @Override
-    public void addWorkerToMap(String key, Worker worker) {
-        getWorkerMap().put(key, worker);
-    }
-
-    @Override
     public void cleanShelter() {
         System.out.println("Owner cleaning!??");
     }
