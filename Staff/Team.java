@@ -6,8 +6,6 @@ public class Team {
     private Manager leader;
     private Set<Execute> teamMembers;
 
-
-
     private int powerOfTeam;
 
     public Team() {

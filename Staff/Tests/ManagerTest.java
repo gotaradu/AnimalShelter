@@ -1,5 +1,11 @@
-package Staff;
+package Staff.Tests;
 
+import Staff.*;
+import Staff.ENUMs.Gender;
+import Staff.ENUMs.WORK;
+import Staff.Exeptions.NotEnoughVolunteersException;
+import Staff.Exeptions.NotEnoughWorkersException;
+import Staff.Exeptions.TeamIsOutOfBoundsException;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;

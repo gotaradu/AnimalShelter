@@ -1,9 +1,9 @@
 import java.util.*;
 
-import Animals.*;
-import Shelter.*;
 import Staff.*;
-import com.sun.security.jgss.GSSUtil;
+import Staff.ENUMs.Gender;
+import Staff.ENUMs.WORK;
+import Staff.Exeptions.AlreadyExistsException;
 
 public class Main {
     public static void main(String[] args) {

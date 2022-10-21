@@ -6,7 +6,7 @@ import Staff.Owner;
 import java.util.ArrayList;
 
 public class Shelter {
-    public double foodQuantity;
+    public static double foodQuantity;
 
     private ArrayList<Animal> animals = new ArrayList<>();
 

@@ -1,5 +1,8 @@
 package Staff;
 
+import Staff.ENUMs.Gender;
+import Staff.ENUMs.WORK;
+
 import java.util.Objects;
 
 public abstract class Execute implements Employee {
@@ -11,22 +14,6 @@ public abstract class Execute implements Employee {
     private int happinessLevel;
 
     private boolean hasTeam = false;
-
-    public boolean isHasTeam() {
-        return hasTeam;
-    }
-
-    public void setHasTeam(boolean hasTeam) {
-        this.hasTeam = hasTeam;
-    }
-
-    public int getPowerLevel() {
-        return powerLevel;
-    }
-
-    public void setPowerLevel(int powerLevel) {
-        this.powerLevel = powerLevel;
-    }
 
     private int powerLevel;
 
@@ -47,6 +34,8 @@ public abstract class Execute implements Employee {
     }
 
     public void setExhaustionLevel(int exhaustionLevel) {
+        //TODO implement a better functionality so the exhaustionLevel can't be over 100 or under 0
+        // if exhaustionLevel << 1 ==> quit()
         this.exhaustionLevel = exhaustionLevel;
     }
 
@@ -55,6 +44,9 @@ public abstract class Execute implements Employee {
     }
 
     public void setHappinessLevel(int happinessLevel) {
+        //TODO happinessLevel rises with the time being on hold ( 1 min-> 1 point)
+        // Implement a better functionality so the happiness doesn't exceed bounds 0->100
+        // If happinessLevel<0 quit();
         this.happinessLevel = happinessLevel;
     }
 
@@ -72,6 +64,22 @@ public abstract class Execute implements Employee {
 
     public WORK getTypeOfWork() {
         return typeOfWork;
+    }
+
+    public boolean isHasTeam() {
+        return hasTeam;
+    }
+
+    public void setHasTeam(boolean hasTeam) {
+        this.hasTeam = hasTeam;
+    }
+
+    public int getPowerLevel() {
+        return powerLevel;
+    }
+
+    public void setPowerLevel(int powerLevel) {
+        this.powerLevel = powerLevel;
     }
 
     @Override

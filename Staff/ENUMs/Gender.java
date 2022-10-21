@@ -1,4 +1,4 @@
-package Staff;
+package Staff.ENUMs;
 
 public enum Gender {
     MAN,

@@ -1,5 +1,7 @@
 package Staff;
 
+import Staff.ENUMs.Gender;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;

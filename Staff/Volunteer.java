@@ -2,6 +2,8 @@ package Staff;
 
 import Animals.Cat;
 import Animals.Dog;
+import Staff.ENUMs.Gender;
+import Staff.ENUMs.WORK;
 
 public class Volunteer extends Execute{
     public Volunteer(String name, int age, Gender gender, WORK typeOfWork) {
