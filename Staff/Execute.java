@@ -1,5 +1,7 @@
 package Staff;
 
+import java.util.Objects;
+
 public abstract class Execute implements Employee {
 
     private String name;
@@ -8,13 +10,26 @@ public abstract class Execute implements Employee {
     private int exhaustionLevel;
     private int happinessLevel;
 
+    public int getPowerLevel() {
+        return powerLevel;
+    }
+
+    public void setPowerLevel(int powerLevel) {
+        this.powerLevel = powerLevel;
+    }
+
+    private int powerLevel;
+
+    private WORK typeOfWork;
+
     public Execute() {
     }
 
-    public Execute(String name, int age, Gender gender) {
+    public Execute(String name, int age, Gender gender, WORK typeOfWork) {
         this.name = name;
         this.age = age;
         this.gender = gender;
+        this.typeOfWork = typeOfWork;
     }
 
     public int getExhaustionLevel() {
@@ -45,4 +60,20 @@ public abstract class Execute implements Employee {
         return gender;
     }
 
+    public WORK getTypeOfWork() {
+        return typeOfWork;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Execute execute = (Execute) o;
+        return age == execute.age && name.equals(execute.name) && gender == execute.gender;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, age, gender);
+    }
 }

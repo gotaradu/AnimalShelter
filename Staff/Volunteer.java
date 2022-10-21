@@ -4,8 +4,8 @@ import Animals.Cat;
 import Animals.Dog;
 
 public class Volunteer extends Execute{
-    public Volunteer(String name, int age, Gender gender) {
-        super(name, age, gender);
+    public Volunteer(String name, int age, Gender gender, WORK typeOfWork) {
+        super(name, age, gender, typeOfWork);
     }
 
     @Override

@@ -5,8 +5,8 @@ import Animals.Dog;
 
 public class Worker extends Execute {
 
-    public Worker(String name, int age, Gender gender) {
-        super(name, age, gender);
+    public Worker(String name, int age, Gender gender, WORK typeOfWork) {
+        super(name, age, gender, typeOfWork);
     }
 
     @Override
@@ -28,7 +28,6 @@ public class Worker extends Execute {
     public void feedAnimals() {
 
     }
-
 
 
 }

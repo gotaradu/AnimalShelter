@@ -6,12 +6,12 @@ import java.util.Objects;
 
 public abstract class Lead implements Employee {
 
-    private  String name;
+    private String name;
     private int age;
     private Gender gender;
 
-    private Map<String, Worker> workerMap = new HashMap<String, Worker>();
-    private Map<String, Volunteer> volunteerMap = new HashMap<String, Volunteer>();
+    private static Map<String, Worker> workerMap = new HashMap<String, Worker>();
+    private static Map<String, Volunteer> volunteerMap = new HashMap<String, Volunteer>();
 
     public Lead() {
 
@@ -23,11 +23,11 @@ public abstract class Lead implements Employee {
         this.gender = gender;
     }
 
-    protected Map<String, Worker> getWorkerMap() {
+    public Map<String, Worker> getWorkerMap() {
         return workerMap;
     }
 
-    protected Map<String, Volunteer> getVolunteerMap() {
+    public Map<String, Volunteer> getVolunteerMap() {
         return volunteerMap;
     }
 

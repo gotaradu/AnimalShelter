@@ -9,8 +9,8 @@ public class Owner extends Lead { // Owner is singleton because there can be onl
 
     private static final Owner owner = new Owner("OWNER", 99, Gender.MAN);
 
-    private Map<String, Owner> ownerMap = new HashMap<String, Owner>();
-    private Map<String, Manager> managerMap = new HashMap<String, Manager>();
+    private static Map<String, Owner> ownerMap = new HashMap<String, Owner>();
+    private static Map<String, Manager> managerMap = new HashMap<String, Manager>();
 
     public Owner(String name, int age, Gender gender) {
         super(name, age, gender);
@@ -19,8 +19,8 @@ public class Owner extends Lead { // Owner is singleton because there can be onl
     public static Owner getInstance() {
         return owner;
     }
-    
-    public void addManagerToMap(String key, Manager manager) throws AlreadyExistsException{
+
+    public void addManagerToMap(String key, Manager manager) throws AlreadyExistsException {
         if (managerMap.containsKey(key)) {
             throw new AlreadyExistsException("This manager already exists!");
         } else {

@@ -1,10 +1,9 @@
-import java.util.Date;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 import Animals.*;
 import Shelter.*;
 import Staff.*;
+import com.sun.security.jgss.GSSUtil;
 
 public class Main {
     public static void main(String[] args) {
@@ -48,6 +47,20 @@ public class Main {
 
         for (Map.Entry<String, Manager> entry : owner.getManagerMap().entrySet()) {
             System.out.println(entry.getValue().getName());
+            System.out.println(entry.getKey());
+        }
+
+        Worker worker1 = new Worker("a", 1, Gender.WOMEN, WORK.CLEAN);
+        Worker worker2 = new Worker("b", 2, Gender.MAN, WORK.CLEAN);
+
+        manager1.addWorkerToMap(String.valueOf(worker1.hashCode()), worker1);
+        manager2.addWorkerToMap(String.valueOf(worker2.hashCode()), worker2);
+
+        Set set = manager1.createTeamForWork(WORK.CLEAN);
+
+        for (Object o : set.toArray()) {
+            Execute e = (Execute) o;
+            System.out.println(e.getName());
         }
     }
 }
