@@ -31,12 +31,12 @@ public abstract class Lead implements Employee {
         return volunteerMap;
     }
 
-    public void addWorkerToMap(String key, Worker worker) {
-        workerMap.put(key, worker);
+    public void addWorkerToMap(Worker worker) {
+        workerMap.put(String.valueOf(worker.hashCode()), worker);
     }
 
-    public void addVolunteerToMap(String key, Volunteer volunteer) {
-        volunteerMap.put(key, volunteer);
+    public void addVolunteerToMap(Volunteer volunteer) {
+        volunteerMap.put(String.valueOf(volunteer.hashCode()), volunteer);
     }
 
 

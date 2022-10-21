@@ -86,4 +86,15 @@ public abstract class Execute implements Employee {
     public int hashCode() {
         return Objects.hash(name, age, gender);
     }
+
+    @Override
+    public String toString() {
+        return "Execute{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", gender=" + gender +
+                ", hasTeam=" + hasTeam +
+                ", typeOfWork=" + typeOfWork +
+                '}';
+    }
 }

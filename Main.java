@@ -52,9 +52,9 @@ public class Main {
 
         Worker worker1 = new Worker("John", 34, Gender.WOMEN, WORK.CLEAN);
         Worker worker2 = new Worker("Doe", 14, Gender.MAN, WORK.CLEAN);
-
-        manager1.addWorkerToMap(String.valueOf(worker1.hashCode()), worker1);
-        manager2.addWorkerToMap(String.valueOf(worker1.hashCode()), worker1);
+//
+//        manager1.addWorkerToMap(String.valueOf(worker1.hashCode()), worker1);
+//        manager2.addWorkerToMap(String.valueOf(worker1.hashCode()), worker1);
 
 //        Set set = manager1.createTeamForWork(WORK.CLEAN);
 //        Set set2 = manager1.createTeamForWork(WORK.CLEAN);
