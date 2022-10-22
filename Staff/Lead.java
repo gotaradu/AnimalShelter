@@ -2,15 +2,19 @@ package Staff;
 
 import Staff.ENUMs.Gender;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public abstract class Lead implements Employee {
+public abstract class Lead implements Employee, Serializable {
 
     private String name;
     private int age;
     private Gender gender;
+
+    private ArrayList<Team> teamsOwned = new ArrayList<>();
 
     private static Map<String, Worker> workerMap = new HashMap<String, Worker>();
     private static Map<String, Volunteer> volunteerMap = new HashMap<String, Volunteer>();
@@ -41,6 +45,17 @@ public abstract class Lead implements Employee {
         volunteerMap.put(String.valueOf(volunteer.hashCode()), volunteer);
     }
 
+    public ArrayList<Team> getTeamsOwned() {
+        return teamsOwned;
+    }
+
+    public void setTeamsOwned(ArrayList<Team> teamsOwned) {
+        this.teamsOwned = teamsOwned;
+    }
+
+    public void addTeamToManager(Team team) {
+        teamsOwned.add(team);
+    }
 
     public String getName() {
         return this.name;
@@ -57,5 +72,14 @@ public abstract class Lead implements Employee {
     @Override
     public int hashCode() {
         return Objects.hash(name, age, gender);
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", gender=" + gender +
+                '}';
     }
 }

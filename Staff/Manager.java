@@ -200,4 +200,9 @@ public class Manager extends Lead {
         return executeMap;
     }
 
+    @Override
+    public String toString() {
+        return "Manager " + super.toString();
+    }
+
 }

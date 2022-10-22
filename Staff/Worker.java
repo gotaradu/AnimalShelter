@@ -31,6 +31,9 @@ public class Worker extends Execute {
 
     }
 
-
+    @Override
+    public String toString() {
+        return "Worker " + super.toString();
+    }
 }
 

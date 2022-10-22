@@ -3,9 +3,10 @@ package Staff;
 import Staff.ENUMs.Gender;
 import Staff.ENUMs.WORK;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class Execute implements Employee {
+public abstract class Execute implements Employee, Serializable {
 
     private String name;
     private int age;
@@ -97,7 +98,7 @@ public abstract class Execute implements Employee {
 
     @Override
     public String toString() {
-        return "\n" + "Execute{" +
+        return "{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
                 ", gender=" + gender +

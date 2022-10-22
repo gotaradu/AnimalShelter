@@ -68,8 +68,6 @@ public class ManagerTest {
             System.out.println(teamIsOutOfBoundsException.getMessage());
         } catch (NotEnoughWorkersException notEnoughWorkersException) {
             System.out.println(notEnoughWorkersException.getMessage());
-        } catch (NotEnoughVolunteersException notEnoughVolunteersException) {
-            System.out.println(notEnoughVolunteersException.getMessage());
         }
 
 //        ArrayList<Class> classArrayListExpected = new ArrayList<>();

@@ -1,9 +1,12 @@
+import java.io.*;
 import java.util.*;
 
 import Staff.*;
 import Staff.ENUMs.Gender;
 import Staff.ENUMs.WORK;
 import Staff.Exeptions.AlreadyExistsException;
+
+import javax.tools.FileObject;
 
 public class Main {
     public static void main(String[] args) {
@@ -40,19 +43,37 @@ public class Main {
             owner.addManagerToMap(manager1);
             owner.addManagerToMap(manager2);
         } catch (AlreadyExistsException alreadyExistsException) {
-            System.out.println(alreadyExistsException.getMessage());
+//            System.out.println(alreadyExistsException.getMessage());
         }
-        System.out.println(owner.getManagerMap().size());
-        System.out.println(owner.getName());
+//        System.out.println(owner.getManagerMap().size());
+//        System.out.println(owner.getName());
 
         for (Map.Entry<String, Manager> entry : owner.getManagerMap().entrySet()) {
-            System.out.println(entry.getValue().getName());
-            System.out.println(entry.getKey());
+//            System.out.println(entry.getValue().getName());
+//            System.out.println(entry.getKey());
         }
 
-        Worker worker1 = new Worker("John", 34, Gender.WOMEN, WORK.CLEAN);
-        Worker worker2 = new Worker("Doe", 14, Gender.MAN, WORK.CLEAN);
+//        try {
+//            FileOutputStream fileOutputStream = new FileOutputStream(new File("data.txt"));
+//            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+//
+//            objectOutputStream.writeObject(worker1);
+//            objectOutputStream.writeObject(worker2);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+        try {
+            FileInputStream fileInputStream = new FileInputStream(new File("data.txt"));
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 
+            Worker worker1 = (Worker) objectInputStream.readObject();
+            Worker worker2 = (Worker) objectInputStream.readObject();
+
+            System.out.println(worker1);
+            System.out.println(worker2);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 }
