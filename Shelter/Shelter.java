@@ -6,23 +6,37 @@ import Staff.Owner;
 import java.util.ArrayList;
 
 public class Shelter {
-    public static double foodQuantity;
+    private static double foodQuantity; //max 500
+    private static double funds;
+
+    private static double cleanlinessLevel;
 
     private ArrayList<Animal> animals = new ArrayList<>();
 
-    public Shelter(int foodQuantity) {
-        this.foodQuantity = foodQuantity;
+    public static double getFunds() {
+        return funds;
     }
 
-    public double getFoodQuantity() {
+    public static void setFunds(double funds) {
+        Shelter.funds = funds;
+    }
+
+    public Shelter(int foodQuantity) {
+        Shelter.foodQuantity = foodQuantity;
+    }
+
+    public static double getFoodQuantity() {
         return foodQuantity;
     }
 
-    public void setFoodQuantity(int foodQuantity) {
-        this.foodQuantity = foodQuantity;
+    public static void setFoodQuantity(double quantity) {
+        Shelter.foodQuantity = quantity;
     }
 
-    public void addAnimalToShelter(Animal animal){
+    public static void addFood(double quantity){
+        Shelter.foodQuantity+=quantity;
+    }
+    public void addAnimalToShelter(Animal animal) {
         animals.add(animal);
     }
 
@@ -30,7 +44,7 @@ public class Shelter {
         return animals;
     }
 
-    public String getTypeOfAnimal(Animal animal){
+    public String getTypeOfAnimal(Animal animal) {
         return String.valueOf(animal.getClass());
     }
 

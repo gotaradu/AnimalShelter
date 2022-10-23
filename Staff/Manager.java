@@ -5,6 +5,7 @@ import Animals.Dog;
 import Shelter.Shelter;
 import Staff.ENUMs.Gender;
 import Staff.ENUMs.WORK;
+import Staff.Exeptions.DepositOfFoodIsFullException;
 import Staff.Exeptions.NotEnoughWorkersException;
 import Staff.Exeptions.PowerTooHighException;
 import Staff.Exeptions.TeamIsOutOfBoundsException;
@@ -183,9 +184,11 @@ public class Manager extends Lead {
         }
     }
 
-    public void buyFood() {
+    public void buyFood(double quantity) throws DepositOfFoodIsFullException {
         //TODO implement a better functionality of this method
-        Shelter.foodQuantity++;
+        if (Shelter.getFoodQuantity() + quantity <= 500)
+            Shelter.addFood(quantity);
+        else throw new DepositOfFoodIsFullException("Deposit is Full with this quantity! Add a little less...");
     }
 
     public void findAdoption() {
