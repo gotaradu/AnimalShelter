@@ -1,5 +1,8 @@
 package Staff;
 
+import Animals.Animal;
+import Shelter.Client;
+import Shelter.Shelter;
 import Staff.ENUMs.Gender;
 
 import java.io.Serializable;
@@ -81,5 +84,12 @@ public abstract class Lead implements Employee, Serializable {
                 ", age=" + age +
                 ", gender=" + gender +
                 '}';
+    }
+
+    public void allowAdoption(Animal animal, Client client) {
+        //TODO implement a better functionality of this method
+        if (animal.isCanBeAdopted() && client.getWantsToAdopt()) {
+            Shelter.removeAnimal(animal, client);
+        }
     }
 }

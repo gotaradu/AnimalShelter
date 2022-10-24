@@ -1,8 +1,10 @@
 package Staff;
 
+import Animals.Animal;
 import Animals.Cat;
 import Animals.Dog;
 import Shelter.Shelter;
+import Shelter.Client;
 import Staff.ENUMs.Gender;
 import Staff.ENUMs.WORK;
 import Staff.Exeptions.DepositOfFoodIsFullException;
@@ -17,7 +19,7 @@ import java.util.Set;
 
 public class Manager extends Lead {
 
-    private static Map<String, Execute> executeMap = new HashMap<String, Execute>();
+    private static Map<String, Execute> executeMap = new HashMap<>();
 
     public Manager(String name, int age, Gender gender) {
         super(name, age, gender);
@@ -185,15 +187,10 @@ public class Manager extends Lead {
     }
 
     public void buyFood(double quantity) throws DepositOfFoodIsFullException {
-        //TODO implement a better functionality of this method
         if (Shelter.getFoodQuantity() + quantity <= 500)
             Shelter.addFood(quantity);
         else throw new DepositOfFoodIsFullException("Deposit is Full with this quantity! Add a little less...");
     }
-
-    public void findAdoption() {
-        //TODO implement a better functionality of this method
-    }// random chance of finding possible adoptions
 
     public Map<String, Execute> updateExecuteMap() {
         System.out.println("updated by " + this.getName());

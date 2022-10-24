@@ -40,15 +40,15 @@ public class Main {
         Manager manager1 = new Manager("Andreea", 20, Gender.WOMEN);
         Manager manager2 = new Manager("Elena", 20, Gender.WOMEN);
         try {
-            owner.addManagerToMap(manager1);
-            owner.addManagerToMap(manager2);
+            owner.hireManager(manager1);
+            owner.hireManager(manager2);
         } catch (AlreadyExistsException alreadyExistsException) {
 //            System.out.println(alreadyExistsException.getMessage());
         }
 //        System.out.println(owner.getManagerMap().size());
 //        System.out.println(owner.getName());
 
-        for (Map.Entry<String, Manager> entry : owner.getManagerMap().entrySet()) {
+        for (Map.Entry<String, Manager> entry : owner.getManagers().entrySet()) {
 //            System.out.println(entry.getValue().getName());
 //            System.out.println(entry.getKey());
         }
