@@ -4,7 +4,7 @@ import Animals.*;
 
 public interface Employee {
 
-    public void feedAnimals();
+    public void feedAnimals(double quantity);
 
     public void cleanShelter();
 

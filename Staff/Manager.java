@@ -12,14 +12,13 @@ import Staff.Exeptions.NotEnoughWorkersException;
 import Staff.Exeptions.PowerTooHighException;
 import Staff.Exeptions.TeamIsOutOfBoundsException;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Manager extends Lead {
 
     private static Map<String, Execute> executeMap = new HashMap<>();
+    private ArrayList<Team> teamsOwned = new ArrayList<>();
+
 
     public Manager(String name, int age, Gender gender) {
         super(name, age, gender);
@@ -41,8 +40,16 @@ public class Manager extends Lead {
     }
 
     @Override
-    public void feedAnimals() {
+    public void feedAnimals(double quantity) {
 
+    }
+
+    public ArrayList<Team> getTeamsOwned() {
+        return teamsOwned;
+    }
+
+    public void setTeamsOwned(ArrayList<Team> teamsOwned) {
+        this.teamsOwned = teamsOwned;
     }
 
     public Team createTeamForWork(WORK work, Manager administrator, int noOfMembers) throws TeamIsOutOfBoundsException, NotEnoughWorkersException {
@@ -102,6 +109,7 @@ public class Manager extends Lead {
                 throw new NotEnoughWorkersException("Not enough Workers!");
             }
             team.setTeamMembers(teamHashSet);
+            administrator.addTeamToManager(team);
             return team;
         }
     }
@@ -184,6 +192,10 @@ public class Manager extends Lead {
             team.setTeamMembers(teamHashSet);
             return team;
         }
+    }
+
+    public void addTeamToManager(Team team) {
+        teamsOwned.add(team);
     }
 
     public void buyFood(double quantity) throws DepositOfFoodIsFullException {

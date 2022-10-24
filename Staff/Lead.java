@@ -4,6 +4,7 @@ import Animals.Animal;
 import Shelter.Client;
 import Shelter.Shelter;
 import Staff.ENUMs.Gender;
+import Staff.Exeptions.CantBeAdoptedException;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -16,8 +17,6 @@ public abstract class Lead implements Employee, Serializable {
     private String name;
     private int age;
     private Gender gender;
-
-    private ArrayList<Team> teamsOwned = new ArrayList<>();
 
     private static Map<String, Worker> workerMap = new HashMap<String, Worker>();
     private static Map<String, Volunteer> volunteerMap = new HashMap<String, Volunteer>();
@@ -48,17 +47,6 @@ public abstract class Lead implements Employee, Serializable {
         volunteerMap.put(String.valueOf(volunteer.hashCode()), volunteer);
     }
 
-    public ArrayList<Team> getTeamsOwned() {
-        return teamsOwned;
-    }
-
-    public void setTeamsOwned(ArrayList<Team> teamsOwned) {
-        this.teamsOwned = teamsOwned;
-    }
-
-    public void addTeamToManager(Team team) {
-        teamsOwned.add(team);
-    }
 
     public String getName() {
         return this.name;
@@ -83,13 +71,17 @@ public abstract class Lead implements Employee, Serializable {
                 "name='" + name + '\'' +
                 ", age=" + age +
                 ", gender=" + gender +
-                '}';
+                '}' + "\n";
     }
 
-    public void allowAdoption(Animal animal, Client client) {
+    public void allowAdoption(Manager manager, Animal animal, Client client) {
         //TODO implement a better functionality of this method
-        if (animal.isCanBeAdopted() && client.getWantsToAdopt()) {
+        try {
             Shelter.removeAnimal(animal, client);
+            System.out.println("Animal removed by: " + manager);
+        } catch (CantBeAdoptedException cantBeAdoptedException) {
+            System.out.println(cantBeAdoptedException.getMessage());
         }
     }
+
 }

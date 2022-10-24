@@ -27,7 +27,7 @@ public class Worker extends Execute {
     }
 
     @Override
-    public void feedAnimals() {
+    public void feedAnimals(double quantity) {
 
     }
 

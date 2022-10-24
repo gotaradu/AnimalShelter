@@ -2,9 +2,11 @@ package Shelter;
 
 import Animals.Animal;
 import Animals.Cat;
+import Staff.Exeptions.CantBeAdoptedException;
 import Staff.Owner;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Set;
 
 public class Shelter {
@@ -23,6 +25,7 @@ public class Shelter {
 
     private static ArrayList<Cage> cages = new ArrayList<>();
     private static ArrayList<Animal> animals = new ArrayList<>();
+    private static ArrayList<Adoption> adoptions = new ArrayList<>();
 
     public static double getFunds() {
         return funds;
@@ -52,20 +55,28 @@ public class Shelter {
     }
 
     public static Shelter getInstance() {
-        return Shelter.getInstance();
+        return shelter;
     }
 
     public static double getFoodQuantity() {
         return foodQuantity;
     }
 
+    public static void setFoodQuantity(double foodQuantity) {
+        Shelter.foodQuantity = foodQuantity;
+    }
+
     public static void addFood(double quantity) {
         Shelter.foodQuantity += quantity;
     }
 
-    public static void removeAnimal(Animal animal, Client client) {
+    public static void removeAnimal(Animal animal, Client client) throws CantBeAdoptedException {
         //TODO implement this
         // allow remove Animal only if its adoptable and has a client and only for manager and owner
+        if (animal.isCanBeAdopted() && client.getWantsToAdopt()) {
+            adoptions.add(new Adoption(animal, new Date()));
+            animals.remove(animal);
+        } else throw new CantBeAdoptedException("This dog can't be adopted");
     }
 
     public static void addAnimalToShelter(Animal animal) {
@@ -80,4 +91,9 @@ public class Shelter {
         return String.valueOf(animal.getClass());
     }
 
+    @Override
+    public String toString() {
+        return "Shelter{ Owner: " + "\n" + owner.toString() + "\n" + "Managers: " + "\n" + owner.getManagers().toString() +
+                "\n" + "Workers: " + "\n" + owner.getWorkerMap().toString() + "Volunteers: " + "\n" + owner.getVolunteerMap().toString();
+    }
 }

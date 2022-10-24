@@ -26,7 +26,7 @@ public class Volunteer extends Execute {
     }
 
     @Override
-    public void feedAnimals() {
+    public void feedAnimals(double quantity) {
 
     }
 }

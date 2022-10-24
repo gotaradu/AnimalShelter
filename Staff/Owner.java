@@ -1,8 +1,10 @@
 package Staff;
 
+import Animals.Animal;
 import Animals.Cat;
 import Animals.Dog;
 import Shelter.Client;
+import Shelter.Shelter;
 import Staff.ENUMs.Gender;
 import Staff.Exeptions.AlreadyExistsException;
 import org.jetbrains.annotations.NotNull;
@@ -11,13 +13,13 @@ import java.util.*;
 
 public class Owner extends Lead { // Owner is singleton because there can be only 1 owner
 
-    private static final Owner owner = new Owner("OWNER", 99, Gender.MAN,500);
+    private static final Owner owner = new Owner("OWNER", 99, Gender.MAN, 500);
     private static double funds;
 
     private static Map<String, Owner> ownerMap = new HashMap<>();
     private static Map<String, Manager> managerMap = new HashMap<>();
 
-    public Owner(String name, int age, Gender gender,double funds) {
+    public Owner(String name, int age, Gender gender, double funds) {
         super(name, age, gender);
         Owner.funds = funds;
     }
@@ -25,6 +27,7 @@ public class Owner extends Lead { // Owner is singleton because there can be onl
     public static Owner getInstance() {
         return owner;
     }
+
     public void hireManager(@NotNull Manager manager) throws AlreadyExistsException {
         if (managerMap.containsKey(String.valueOf(manager.hashCode()))) {
             throw new AlreadyExistsException("This manager already exists!");
@@ -61,14 +64,11 @@ public class Owner extends Lead { // Owner is singleton because there can be onl
     }
 
     @Override
-    public void quit() {
-
-    }
-
-    @Override
-    public void feedAnimals() {
+    public void feedAnimals(double quantity) {
         System.out.println("Owner feeding animals!");
+        Shelter.setFoodQuantity(Shelter.getFoodQuantity() - quantity);
+        System.out.println("Food left in the shelter: " + Shelter.getFoodQuantity());
+        //TODO create a method to feed all the animals by dividing the quantity equal to each animal
     }
-
 
 }

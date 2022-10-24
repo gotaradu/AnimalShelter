@@ -6,7 +6,7 @@ import java.util.Random;
 public class Animal {
 
     private String name;                // name of animal -- set only after shelter
-    private String age;                 // age of animal -- might be unknown
+    private int age;                 // age of animal -- might be unknown
     private boolean isAlive = true;     // if it's alive -- true by default
     private Date dateOfComing;          // date of coming
     private double feedingLevel;      // level of feeding
@@ -16,7 +16,7 @@ public class Animal {
     private double adoptionRate;        //0->100
     Random random = new Random();
 
-    public Animal(String name, String age, boolean isAlive, Date dateOfComing, double feedingLevel, int cutenessLevel) {
+    public Animal(String name, int age, boolean isAlive, Date dateOfComing, double feedingLevel, int cutenessLevel) {
         this.name = name;
         this.age = age;
         this.isAlive = isAlive;
@@ -38,7 +38,7 @@ public class Animal {
         this.name = name;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
@@ -93,4 +93,17 @@ public class Animal {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", isAlive=" + isAlive +
+                ", dateOfComing=" + dateOfComing +
+                ", feedingLevel=" + feedingLevel +
+                ", cutenessLevel=" + cutenessLevel +
+                ", canBeAdopted=" + canBeAdopted +
+                ", adoptionRate=" + adoptionRate +
+                '}';
+    }
 }

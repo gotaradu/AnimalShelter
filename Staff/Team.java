@@ -14,8 +14,6 @@ public class Team {
     public Team(Manager leader, Set<Execute> teamMembers) {
         this.leader = leader;
         this.teamMembers = teamMembers;
-
-
     }
 
     public Manager getLeader() {
@@ -38,5 +36,12 @@ public class Team {
         return powerOfTeam;
     }
 
-
+    @Override
+    public String toString() {
+        return "Team{" +
+                "leader=" + leader +
+                ", teamMembers=" + teamMembers +
+                ", powerOfTeam=" + powerOfTeam +
+                '}';
+    }
 }
