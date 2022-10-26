@@ -2,9 +2,13 @@ package Staff;
 
 import Animals.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 public interface Employee {
 
-    public void feedAnimals(double quantity);
+    public void feedAnimals(double quantity, ArrayList<Animal> animals);
 
     public void cleanShelter();
 

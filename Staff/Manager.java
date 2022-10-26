@@ -40,7 +40,7 @@ public class Manager extends Lead {
     }
 
     @Override
-    public void feedAnimals(double quantity) {
+    public void feedAnimals(double quantity,ArrayList<Animal> animals) {
 
     }
 

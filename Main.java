@@ -137,9 +137,14 @@ public class Main {
         System.out.println(shelter);
 
         Animal animal = new Animal("Dog1", 2, true, new Date(), 14, 98);
+        Animal animal2 = new Animal("Dog2", 2, true, new Date(), 45, 98);
+        ArrayList<Animal> animalList = new ArrayList<>();
 
         System.out.println(animal);
+        animalList.add(animal);
+        animalList.add(animal2);
+        owner.feedAnimals(30, animalList);
 
-        owner.feedAnimals(50);
+        System.out.println(Shelter.getFoodQuantity());
     }
 }

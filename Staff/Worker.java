@@ -1,9 +1,13 @@
 package Staff;
 
+import Animals.Animal;
 import Animals.Cat;
 import Animals.Dog;
 import Staff.ENUMs.Gender;
 import Staff.ENUMs.WORK;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Worker extends Execute {
 
@@ -27,7 +31,7 @@ public class Worker extends Execute {
     }
 
     @Override
-    public void feedAnimals(double quantity) {
+    public void feedAnimals(double quantity, ArrayList<Animal> animals) {
 
     }
 

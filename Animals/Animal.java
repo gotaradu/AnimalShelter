@@ -9,7 +9,7 @@ public class Animal {
     private int age;                 // age of animal -- might be unknown
     private boolean isAlive = true;     // if it's alive -- true by default
     private Date dateOfComing;          // date of coming
-    private double feedingLevel;      // level of feeding
+    private double feedingLevel;      // level of feeding max 500
     private int cutenessLevel;          // level of cuteness 0->100
 
     private boolean canBeAdopted;       // an animal can be adopted if it's adoption rate is over 75%
@@ -56,6 +56,10 @@ public class Animal {
 
     public double getFeedingLevel() {
         return feedingLevel;
+    }
+
+    public void setFeedingLevel(double feedingLevel) {
+        this.feedingLevel = feedingLevel;
     }
 
     public int getCutenessLevel() {
