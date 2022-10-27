@@ -51,6 +51,7 @@ public abstract class Execute implements Employee, Serializable {
         this.ownTeam = ownTeam;
     }
 
+
     public int getHappinessLevel() {
         return happinessLevel;
     }

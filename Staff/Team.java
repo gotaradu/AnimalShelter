@@ -9,6 +9,9 @@ public class Team {
     private Manager leader;
     private Map<String, Execute> teamMembers;
 
+    private int noOfWorkers;
+    private int noOfVolunteers;
+
     private int powerOfTeam;
 
     public Team() {
@@ -17,6 +20,34 @@ public class Team {
     public Team(Manager leader, Map<String, Execute> teamMembers) {
         this.leader = leader;
         this.teamMembers = teamMembers;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getNoOfWorkers() {
+        return noOfWorkers;
+    }
+
+    public void incrementWorkers() {
+        this.noOfWorkers++;
+    }
+
+    public int getNoOfVolunteers() {
+        return noOfVolunteers;
+    }
+
+    public void incrementVolunteers() {
+        this.noOfVolunteers++;
+    }
+
+    public void setPowerOfTeam(int powerOfTeam) {
+        this.powerOfTeam = powerOfTeam;
     }
 
     public Manager getLeader() {
@@ -39,6 +70,10 @@ public class Team {
         return powerOfTeam;
     }
 
+    public Team deleteTeam(){
+        Team team = null;
+        return team;
+    }
     @Override
     public String toString() {
         return "Team{" +
@@ -47,4 +82,6 @@ public class Team {
                 ", powerOfTeam=" + powerOfTeam +
                 '}' + "\n";
     }
+
+
 }

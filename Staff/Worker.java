@@ -12,6 +12,7 @@ import java.util.Map;
 
 public class Worker extends Execute {
 
+
     public Worker(String name, int age, Gender gender, WORK typeOfWork) {
         super(name, age, gender, typeOfWork);
     }
@@ -38,12 +39,20 @@ public class Worker extends Execute {
         // Remove worker from the map of workers and employees
         // a map in which the key is the team object and the value is an array with team members
         // Map<Team,Map<String, Execute> teams = Manager.getTeams();
+        // remove from team only if he has a team
+        if (this.getOwnTeam().getNoOfWorkers() == 1) {
+            // dissolve team if the workers is the only one
+            //TODO look here for a better implementation !!!!!!!!!!!!!!!
+            this.getOwnTeam().deleteTeam();
+        }
+        if (this.isHasTeam()) {
+            getOwnTeam().getTeamMembers().remove(String.valueOf(this.hashCode()));
+        }
 
-        getOwnTeam().getTeamMembers().remove(String.valueOf(this.hashCode()));
         this.setHasTeam(false);
+        Manager.removeExecuteWorker(this);
         //TODO need to remove the execute from the executeMap in the manager class
         // if the worker is the only one in the team the team should be dissolved !!!!!!!!!!!
-
     }
 
     @Override

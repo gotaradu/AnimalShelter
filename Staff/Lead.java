@@ -20,6 +20,7 @@ public abstract class Lead implements Employee, Serializable {
 
     private static Map<String, Worker> workerMap = new HashMap<String, Worker>();
     private static Map<String, Volunteer> volunteerMap = new HashMap<String, Volunteer>();
+    private static Map<String, Execute> executeMap = new HashMap<>();
 
     public Lead() {
 
@@ -39,12 +40,35 @@ public abstract class Lead implements Employee, Serializable {
         return volunteerMap;
     }
 
+
+    public void addExecute(Execute execute) {
+        executeMap.put(String.valueOf(execute.hashCode()), execute);
+    }
+
     public void addWorkerToMap(Worker worker) {
         workerMap.put(String.valueOf(worker.hashCode()), worker);
     }
 
     public void addVolunteerToMap(Volunteer volunteer) {
         volunteerMap.put(String.valueOf(volunteer.hashCode()), volunteer);
+    }
+
+    private static void removeWorkerFromMap(Worker worker) {
+        workerMap.remove(String.valueOf(worker.hashCode()), worker);
+    }
+
+    private static void removeVolunteerFromMap(Volunteer volunteer) {
+        volunteerMap.remove(String.valueOf(volunteer.hashCode()), volunteer);
+    }
+
+    protected static void removeExecuteWorker(Worker worker) {
+        executeMap.remove(String.valueOf(worker.hashCode()));
+        removeWorkerFromMap(worker);
+    }
+
+    protected static void removeExecuteVolunteer(Volunteer volunteer) {
+        executeMap.remove(String.valueOf(volunteer.hashCode()));
+        removeVolunteerFromMap(volunteer);
     }
 
 
@@ -57,7 +81,7 @@ public abstract class Lead implements Employee, Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Lead lead = (Lead) o;
-        return age == lead.age && name.equals(lead.name) && gender == lead.gender && Objects.equals(workerMap, lead.workerMap) && Objects.equals(volunteerMap, lead.volunteerMap);
+        return age == lead.age && name.equals(lead.name) && gender == lead.gender;
     }
 
     @Override

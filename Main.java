@@ -149,13 +149,13 @@ public class Main {
         //System.out.println(Shelter.getFoodQuantity());
 
 
-
-        System.out.println(manager1.updateExecuteMap().toString());
+        System.out.println(manager1.getWorkerMap());
 
         worker1.quit();
 
-        System.out.println(manager1.updateExecuteMap().toString());
+        System.out.println(manager1.getWorkerMap());
 
         System.out.println(Manager.getTeams().keySet());
+        //System.out.println(Manager.getTeams().keySet());
     }
 }

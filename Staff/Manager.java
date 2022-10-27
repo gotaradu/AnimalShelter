@@ -15,7 +15,7 @@ import java.util.*;
 
 public class Manager extends Lead {
 
-    private static Map<String, Execute> executeMap = new HashMap<>();
+
     private ArrayList<Team> teamsOwned = new ArrayList<>();
 
     private static Map<Team, Map<String, Execute>> teams = new HashMap<>();
@@ -23,6 +23,7 @@ public class Manager extends Lead {
     public static Map<Team, Map<String, Execute>> getTeams() {
         return teams;
     }
+
 
 
     public Manager(String name, int age, Gender gender) {
@@ -152,6 +153,7 @@ public class Manager extends Lead {
                         System.out.println("Added Worker " + worker.getName());
                         index--;
                         workerExists = true;
+                        team.incrementWorkers();
                         break; //break so we have only one worker
                     } else {
                         fail++;
@@ -170,6 +172,7 @@ public class Manager extends Lead {
                             teamHashMap.put(String.valueOf(volunteer.hashCode()), volunteer);
                             System.out.println("Added Volunteer " + volunteer.getName());
                             volunteer.setHasTeam(true);
+                            team.incrementVolunteers();
                             index--;
                         } else {
                             fail++;
@@ -186,6 +189,7 @@ public class Manager extends Lead {
                             teamHashMap.put(String.valueOf(worker.hashCode()), worker);
                             System.out.println("Added Worker " + worker.getName());
                             worker.setHasTeam(true);
+                            team.incrementWorkers();
                             index--;
                         } else {
                             fail++;
@@ -215,14 +219,6 @@ public class Manager extends Lead {
         if (Shelter.getFoodQuantity() + quantity <= 500)
             Shelter.addFood(quantity);
         else throw new DepositOfFoodIsFullException("Deposit is Full with this quantity! Add a little less...");
-    }
-
-    public Map<String, Execute> updateExecuteMap() {
-        System.out.println("updated by " + this.getName());
-        executeMap.putAll(getWorkerMap());
-        executeMap.putAll(getVolunteerMap());
-
-        return executeMap;
     }
 
     @Override
