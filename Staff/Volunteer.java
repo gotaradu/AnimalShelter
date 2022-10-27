@@ -7,7 +7,6 @@ import Staff.ENUMs.Gender;
 import Staff.ENUMs.WORK;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Volunteer extends Execute {
     public Volunteer(String name, int age, Gender gender, WORK typeOfWork) {
@@ -30,7 +29,12 @@ public class Volunteer extends Execute {
     }
 
     @Override
-    public void feedAnimals(double quantity, ArrayList<Animal> animals) {
+    public void quit() {
 
+    }
+
+    @Override
+    public String toString() {
+        return "Volunteer " + super.toString() ;
     }
 }

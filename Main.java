@@ -100,7 +100,7 @@ public class Main {
 
         owner.hireManager(manager1);
         owner.hireManager(manager2);
-        System.out.println(owner.getManagers());
+        //System.out.println(owner.getManagers());
 
         manager1.addWorkerToMap(worker1);
         manager1.addWorkerToMap(worker2);
@@ -110,7 +110,7 @@ public class Main {
         manager2.addWorkerToMap(worker5);
         manager2.addWorkerToMap(worker6);
 
-        System.out.println(owner.getWorkerMap());
+        //System.out.println(owner.getWorkerMap());
 
         manager1.addVolunteerToMap(volunteer1);
         manager1.addVolunteerToMap(volunteer2);
@@ -119,32 +119,43 @@ public class Main {
         owner.addVolunteerToMap(volunteer5);
         manager2.addVolunteerToMap(volunteer6);
 
-        System.out.println(owner.getVolunteerMap());
+        //System.out.println(owner.getVolunteerMap());
 
 
         try {
             manager1.createTeamForWork(WORK.CLEAN, manager1, 3);
+            manager2.createTeamForWork(WORK.CLEAN, manager2, 3);
         } catch (TeamIsOutOfBoundsException teamIsOutOfBoundsException) {
             System.out.println(teamIsOutOfBoundsException.getMessage());
         } catch (NotEnoughWorkersException notEnoughWorkersException) {
             System.out.println(notEnoughWorkersException.getMessage());
         }
 
-        System.out.println(manager1.getTeamsOwned().toString());
+        //System.out.println(manager1.getTeamsOwned().toString());
 
         Shelter shelter = Shelter.getInstance();
 
-        System.out.println(shelter);
+        //System.out.println(shelter);
 
         Animal animal = new Animal("Dog1", 2, true, new Date(), 14, 98);
         Animal animal2 = new Animal("Dog2", 2, true, new Date(), 45, 98);
         ArrayList<Animal> animalList = new ArrayList<>();
 
-        System.out.println(animal);
+        //System.out.println(animal);
         animalList.add(animal);
         animalList.add(animal2);
-        owner.feedAnimals(30, animalList);
+        manager1.feedAnimals(30, animalList);
 
-        System.out.println(Shelter.getFoodQuantity());
+        //System.out.println(Shelter.getFoodQuantity());
+
+
+
+        System.out.println(manager1.updateExecuteMap().toString());
+
+        worker1.quit();
+
+        System.out.println(manager1.updateExecuteMap().toString());
+
+        System.out.println(Manager.getTeams().keySet());
     }
 }

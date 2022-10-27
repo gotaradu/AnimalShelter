@@ -93,7 +93,8 @@ public class Shelter {
 
     @Override
     public String toString() {
-        return "Shelter{ Owner: " + "\n" + owner.toString() + "\n" + "Managers: " + "\n" + owner.getManagers().toString() +
-                "\n" + "Workers: " + "\n" + owner.getWorkerMap().toString() + "Volunteers: " + "\n" + owner.getVolunteerMap().toString();
+        return "\n" + "Shelter[{" + "\n" + "Owner: " + "\n" + owner.toString() + "\n" + "Managers: " + "\n" + owner.getManagers().toString() +
+                "\n" + "Workers: " + "\n" + owner.getWorkerMap().toString() + "\n" + "Volunteers: " + "\n" + owner.getVolunteerMap().toString() + "\n" + "]";
+
     }
 }

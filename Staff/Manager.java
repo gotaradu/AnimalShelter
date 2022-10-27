@@ -4,7 +4,6 @@ import Animals.Animal;
 import Animals.Cat;
 import Animals.Dog;
 import Shelter.Shelter;
-import Shelter.Client;
 import Staff.ENUMs.Gender;
 import Staff.ENUMs.WORK;
 import Staff.Exeptions.DepositOfFoodIsFullException;
@@ -18,6 +17,12 @@ public class Manager extends Lead {
 
     private static Map<String, Execute> executeMap = new HashMap<>();
     private ArrayList<Team> teamsOwned = new ArrayList<>();
+
+    private static Map<Team, Map<String, Execute>> teams = new HashMap<>();
+
+    public static Map<Team, Map<String, Execute>> getTeams() {
+        return teams;
+    }
 
 
     public Manager(String name, int age, Gender gender) {
@@ -40,7 +45,7 @@ public class Manager extends Lead {
     }
 
     @Override
-    public void feedAnimals(double quantity,ArrayList<Animal> animals) {
+    public void quit() {
 
     }
 
@@ -60,7 +65,7 @@ public class Manager extends Lead {
         else {
             int index = noOfMembers;
             Team team = new Team();
-            Set<Execute> teamHashSet = new HashSet<>();
+            Map<String, Execute> teamHashMap = new HashMap<>();
             // first set admin of team
             team.setLeader(administrator);
             // second try adding one worker
@@ -71,8 +76,9 @@ public class Manager extends Lead {
 //                System.out.println(index);
                 if (!worker.isHasTeam() && worker.getTypeOfWork() == work) {
                     //add worker to new set
-                    teamHashSet.add(worker);
+                    teamHashMap.put(String.valueOf(worker.hashCode()), worker);
                     worker.setHasTeam(true);
+                    worker.setOwnTeam(team);
                     System.out.println("Added Worker " + worker.getName());
                     index--;
                     break; //break so we have only one worker
@@ -86,9 +92,10 @@ public class Manager extends Lead {
                 Volunteer volunteer = entry.getValue();
                 if (index > 0) {
                     if (!volunteer.isHasTeam() && volunteer.getTypeOfWork() == work) {
-                        teamHashSet.add(volunteer);
+                        teamHashMap.put(String.valueOf(volunteer.hashCode()), volunteer);
                         System.out.println("Added Volunteer " + volunteer.getName());
                         volunteer.setHasTeam(true);
+                        volunteer.setOwnTeam(team);
                         index--;
                     }
                 }
@@ -98,9 +105,10 @@ public class Manager extends Lead {
                 for (Map.Entry<String, Worker> entryWorkers : getWorkerMap().entrySet()) {
                     Worker worker = entryWorkers.getValue();
                     if (!worker.isHasTeam() && worker.getTypeOfWork() == work) {
-                        teamHashSet.add(worker);
+                        teamHashMap.put(String.valueOf(worker.hashCode()), worker);
                         System.out.println("Added Worker " + worker.getName());
                         worker.setHasTeam(true);
+                        worker.setOwnTeam(team);
                         index--;
                     }
                 }
@@ -108,8 +116,9 @@ public class Manager extends Lead {
             if (index > 0) {
                 throw new NotEnoughWorkersException("Not enough Workers!");
             }
-            team.setTeamMembers(teamHashSet);
+            team.setTeamMembers(teamHashMap);
             administrator.addTeamToManager(team);
+            teams.put(team, teamHashMap);
             return team;
         }
     }
@@ -126,7 +135,7 @@ public class Manager extends Lead {
             int fail = 0;
             int index = noOfMembers;
             Team team = new Team();
-            Set<Execute> teamHashSet = new HashSet<>();
+            Map<String, Execute> teamHashMap = new HashMap<>();
             // first set admin of team
             team.setLeader(administrator);
             // second try adding one worker
@@ -138,7 +147,7 @@ public class Manager extends Lead {
                 if (!worker.isHasTeam() && worker.getTypeOfWork() == work) {
                     if (powerLevel >= worker.getPowerLevel()) {
                         //add worker to new set
-                        teamHashSet.add(worker);
+                        teamHashMap.put(String.valueOf(worker.hashCode()), worker);
                         worker.setHasTeam(true);
                         System.out.println("Added Worker " + worker.getName());
                         index--;
@@ -158,7 +167,7 @@ public class Manager extends Lead {
                 if (index > 0) {
                     if (!volunteer.isHasTeam() && volunteer.getTypeOfWork() == work) {
                         if (powerLevel >= volunteer.getPowerLevel()) {
-                            teamHashSet.add(volunteer);
+                            teamHashMap.put(String.valueOf(volunteer.hashCode()), volunteer);
                             System.out.println("Added Volunteer " + volunteer.getName());
                             volunteer.setHasTeam(true);
                             index--;
@@ -174,7 +183,7 @@ public class Manager extends Lead {
                     Worker worker = entryWorkers.getValue();
                     if (!worker.isHasTeam() && worker.getTypeOfWork() == work) {
                         if (powerLevel >= worker.getPowerLevel()) {
-                            teamHashSet.add(worker);
+                            teamHashMap.put(String.valueOf(worker.hashCode()), worker);
                             System.out.println("Added Worker " + worker.getName());
                             worker.setHasTeam(true);
                             index--;
@@ -189,9 +198,13 @@ public class Manager extends Lead {
             } else if (fail >= noOfMembers && workerExists) {
                 throw new PowerTooHighException("Try lowering the power");
             }
-            team.setTeamMembers(teamHashSet);
+            team.setTeamMembers(teamHashMap);
             return team;
         }
+    }
+
+    public void addExecuteToTeam() {
+        //TODO implement this method so only one execute can be added to a team
     }
 
     public void addTeamToManager(Team team) {

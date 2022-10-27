@@ -20,6 +20,8 @@ public abstract class Execute implements Employee, Serializable {
 
     private WORK typeOfWork;
 
+    private Team ownTeam;
+
     public Execute() {
     }
 
@@ -28,6 +30,7 @@ public abstract class Execute implements Employee, Serializable {
         this.age = age;
         this.gender = gender;
         this.typeOfWork = typeOfWork;
+        this.ownTeam = null;
     }
 
     public int getExhaustionLevel() {
@@ -38,6 +41,14 @@ public abstract class Execute implements Employee, Serializable {
         //TODO implement a better functionality so the exhaustionLevel can't be over 100 or under 0
         // if exhaustionLevel << 1 ==> quit()
         this.exhaustionLevel = exhaustionLevel;
+    }
+
+    public Team getOwnTeam() {
+        return ownTeam;
+    }
+
+    public void setOwnTeam(Team ownTeam) {
+        this.ownTeam = ownTeam;
     }
 
     public int getHappinessLevel() {
@@ -81,6 +92,10 @@ public abstract class Execute implements Employee, Serializable {
 
     public void setPowerLevel(int powerLevel) {
         this.powerLevel = powerLevel;
+    }
+
+    public void getTeam(Execute execute) {
+
     }
 
     @Override
